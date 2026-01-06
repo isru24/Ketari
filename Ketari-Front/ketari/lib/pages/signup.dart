@@ -49,9 +49,14 @@ class Signup extends StatelessWidget {
                 ReusableTextField(
                   controller: phoneController,
                   hint: "Phone Number",
+                  keyboardtype: TextInputType.phone,
                 ),
                 SizedBox(height: size.height * 0.05),
-                ReusableTextField(controller: emailController, hint: "Email"),
+                ReusableTextField(
+                  controller: emailController,
+                  hint: "Email",
+                  keyboardtype: TextInputType.text,
+                ),
                 SizedBox(height: size.height * 0.03),
                 ElevatedButton(
                   onPressed: () {},
@@ -71,9 +76,18 @@ class Signup extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: size.height * 0.05),
-                Divider(color: Colors.black),
-                SizedBox(height: size.height * 0.06),
+                SizedBox(height: size.height * 0.04),
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: Colors.black)),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Or continue with'),
+                    ),
+                    Expanded(child: Divider(color: Colors.black)),
+                  ],
+                ),
+                SizedBox(height: size.height * 0.03),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -90,11 +104,50 @@ class Signup extends StatelessWidget {
                         height: 24,
                         width: 24,
                       ),
-                      SizedBox(width: size.width * 0.05),
-                      Text("continue with google"),
+                      SizedBox(width: size.width * 0.02),
+                      Text("Google"),
                     ],
                   ),
                 ),
+                SizedBox(height: size.height * 0.02),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.lightGreenAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(20),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/linkedin.png',
+                        height: 24,
+                        width: 24,
+                      ),
+                      SizedBox(width: size.width * 0.02),
+                      Text("Linkden"),
+                    ],
+                  ),
+                ),
+                SizedBox(height: size.height * 0.07),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 67),
+                      child: Text('Already have an account?'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 1),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text('Log In'),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 9),
               ],
             ),
           ),
@@ -109,10 +162,12 @@ class ReusableTextField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hint,
+    required this.keyboardtype,
   });
 
   final TextEditingController controller;
   final String hint;
+  final TextInputType keyboardtype;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +185,7 @@ class ReusableTextField extends StatelessWidget {
         ),
         hintText: hint,
       ),
+      keyboardType: keyboardtype,
     );
   }
 }
