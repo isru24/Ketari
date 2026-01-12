@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ketari/pages/login.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final phoneController = TextEditingController();
+    final firstnameController = TextEditingController();
     final emailController = TextEditingController();
+    final lastnameController = TextEditingController();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Padding(
           padding: const EdgeInsets.only(top: 20),
@@ -27,6 +32,7 @@ class Signup extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: const Color.fromARGB(255, 48, 47, 47),
@@ -37,26 +43,48 @@ class Signup extends StatelessWidget {
               children: [
                 Text(
                   'Welcome To Ketari\n'
-                  '  Signup Now',
+                  ' Signup ',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.getFont(
                     'Inter',
-                    fontSize: size.width * 0.05,
-                    fontWeight: FontWeight.w400,
+                    fontSize: size.width * 0.07,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
                 ),
                 SizedBox(height: size.height * 0.05),
-                ReusableTextField(
-                  controller: phoneController,
-                  hint: "Phone Number",
-                  keyboardtype: TextInputType.phone,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ReusableTextField(
+                          controller: firstnameController,
+                          hint: "First Name",
+                          keyboardtype: TextInputType.phone,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ReusableTextField(
+                          controller: lastnameController,
+                          hint: "Last Name",
+                          keyboardtype: TextInputType.text,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: size.height * 0.05),
-                ReusableTextField(
-                  controller: emailController,
-                  hint: "Email",
-                  keyboardtype: TextInputType.text,
+                SizedBox(height: size.height * 0.03),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ReusableTextField(
+                    controller: emailController,
+                    hint: "Email",
+                    keyboardtype: TextInputType.text,
+                  ),
                 ),
                 SizedBox(height: size.height * 0.03),
                 ElevatedButton(
@@ -72,6 +100,7 @@ class Signup extends StatelessWidget {
                         style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
+                          color: const Color.fromARGB(255, 61, 59, 59),
                         ),
                       ),
                     ],
@@ -148,13 +177,17 @@ class Signup extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 0.1),
                       child: TextButton(
-                        onPressed: () {},
-                        child: Text('Log In'),
+                        onPressed: () async {
+                          await Get.to(() => Login());
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(color: Colors.lightGreenAccent),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 35),
               ],
             ),
           ),
@@ -188,11 +221,13 @@ class ReusableTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.black),
+          borderSide: BorderSide(color: Colors.lightGreenAccent),
         ),
+        hintStyle: TextStyle(color: Colors.white),
         hintText: hint,
       ),
       keyboardType: keyboardtype,
+      style: TextStyle(color: Colors.white),
     );
   }
 }
