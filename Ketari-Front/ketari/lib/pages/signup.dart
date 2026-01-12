@@ -29,7 +29,7 @@ class Signup extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: const Color.fromARGB(255, 235, 222, 179),
+            color: const Color.fromARGB(255, 48, 47, 47),
           ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -43,6 +43,7 @@ class Signup extends StatelessWidget {
                     'Inter',
                     fontSize: size.width * 0.05,
                     fontWeight: FontWeight.w400,
+                    color: Colors.white,
                   ),
                 ),
                 SizedBox(height: size.height * 0.05),
@@ -82,7 +83,10 @@ class Signup extends StatelessWidget {
                     Expanded(child: Divider(color: Colors.black)),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Or continue with'),
+                      child: Text(
+                        'Or continue with',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                     Expanded(child: Divider(color: Colors.black)),
                   ],
@@ -136,10 +140,13 @@ class Signup extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 67),
-                      child: Text('Already have an account?'),
+                      child: Text(
+                        'Already have an account?',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 1),
+                      padding: const EdgeInsets.only(left: 0.1),
                       child: TextButton(
                         onPressed: () {},
                         child: Text('Log In'),
@@ -147,7 +154,7 @@ class Signup extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 9),
+                SizedBox(height: 35),
               ],
             ),
           ),
