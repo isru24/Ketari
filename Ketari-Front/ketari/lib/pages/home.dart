@@ -33,6 +33,7 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(16),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.white),
                       hintText: 'Search Jobs',
                       prefixIcon: Icon(Icons.search, color: Colors.white),
                       filled: true,
